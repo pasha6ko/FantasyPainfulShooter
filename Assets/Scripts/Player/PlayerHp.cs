@@ -12,7 +12,6 @@ interface IDamageble
 public class PlayerHp : MonoBehaviour, IDamageble
 {
     [SerializeField] private float startHp, hp, maxArmor, armor;
-    []
 
     private void Start()
     {
@@ -45,7 +44,8 @@ public class PlayerHp : MonoBehaviour, IDamageble
         {
             float armorDamage = armor;
             armor -= damageValue;
-            if (armor <= 0) damageValue -= armorDamage;    // Вроде работает. Потом перепроверь.
+            if (armor <= 0) damageValue -= armorDamage;
+            armor = Mathf.Clamp(armor,0, maxArmor);
         }
         hp -= damageValue;
         hp = Mathf.Clamp(hp, 0, startHp);

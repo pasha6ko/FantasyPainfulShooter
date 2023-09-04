@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Heal : MonoBehaviour, IPickable
 {
+    [SerializeField] private float healValue;
     public void PickUp(Transform player)
     {
         PlayerHp hp = player.GetComponent<PlayerHp>();
         if (hp == null) return;
-        hp.Heal(20);
+        hp.Heal(healValue);
     }
 }

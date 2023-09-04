@@ -26,7 +26,6 @@ public class ItemInteraction : MonoBehaviour
     }
     public void OnInteract()
     {
-        print("Interact");
         IPickable item;
         if (!RaycastForItem(out item)) return;
         item.PickUp(transform);
