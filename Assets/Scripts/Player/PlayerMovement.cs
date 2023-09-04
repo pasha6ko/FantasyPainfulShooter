@@ -54,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputValue input)
     {
         _inputVector = input.Get<Vector2>();
-        print(_inputVector);
     }
 
     public void OnWallRun()

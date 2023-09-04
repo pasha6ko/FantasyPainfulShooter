@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4136945030301700349, guid: 42ac58e54c9276e478d0a2f322e77bb7, type: 3}
+  - {fileID: 2100000, guid: b36272b06a4d9f240ae5c6dc73a70946, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4136945030301700349, guid: 42ac58e54c9276e478d0a2f322e77bb7, type: 3}
+  - {fileID: 2100000, guid: b36272b06a4d9f240ae5c6dc73a70946, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -200,7 +200,7 @@ Transform:
   - {fileID: 3422019709915496179}
   - {fileID: 1175447291396179744}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7414768448034695438
 Rigidbody:
@@ -210,7 +210,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8065547925338626185}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.002
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -225,7 +225,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -262,3 +262,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66f9b068f5189347a74558a94c3ff9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletDamage: 20
