@@ -753,6 +753,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1867d997058bd24b9177d3e3523b124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1326201115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3427641097877926485, guid: cd0fe365935ab5e4d95cde8395fb0d50,
+    type: 3}
+  m_PrefabInstance: {fileID: 2691707446121361961}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326201111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e5a4d3b4b95b349b2dab9590a5245c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1326201123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,6 +781,26 @@ MonoBehaviour:
   - {fileID: 2644123999845719822}
   - {fileID: 1569878637}
   interaction: {fileID: 1326201114}
+--- !u!114 &1326201124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326201111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50bccc493d0b8f3419f9d0aabd9cde5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 1326201115}
+  maxStamina: 100
+  stamina: 0
+  timeToFullLose: 5
+  timeToFullRecovey: 6
+  speed: 2
+  _lockeAutoRecovery: 0
+  speedMultiplier: 0
 --- !u!1 &1412835192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,6 +1641,11 @@ PrefabInstance:
       propertyPath: currentGun
       value: 
       objectReference: {fileID: 3457076112018097590}
+    - target: {fileID: 2316946229088156242, guid: cd0fe365935ab5e4d95cde8395fb0d50,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3491597211715761826, guid: cd0fe365935ab5e4d95cde8395fb0d50,
         type: 3}
       propertyPath: m_Name
@@ -1696,6 +1733,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1326201123}
+    - targetCorrespondingSourceObject: {fileID: 3491597211715761826, guid: cd0fe365935ab5e4d95cde8395fb0d50,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1326201124}
     - targetCorrespondingSourceObject: {fileID: 7803988011633310337, guid: cd0fe365935ab5e4d95cde8395fb0d50,
         type: 3}
       insertIndex: -1

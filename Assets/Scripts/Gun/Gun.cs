@@ -14,7 +14,7 @@ public class Gun : MonoBehaviour
     private Coroutine _firePricess;
 
 
-    void Start()
+    private void Start()
     {
         OnEnable();
     }
