@@ -10,15 +10,18 @@ public class Gun : MonoBehaviour
     [SerializeField] private Animator gunAnimator;
     [SerializeField] private int allAmmoCount;
     [SerializeField] private int magazin;
-    [SerializeField] private bool trigger, locked;// Make ful private after all
+    [SerializeField] private bool trigger, aiming, locked;// Make ful private after all
     private Coroutine _firePricess;
 
 
     void Start()
     {
+        OnEnable();
+    }
+    private void OnEnable()
+    {
         trigger = false;
         gunAnimator.SetFloat("FireSpeed", settings.fireSpeed);
-        StartGunReload();
     }
 
     public void StartGunReload()
@@ -31,6 +34,11 @@ public class Gun : MonoBehaviour
         magazin = Mathf.Clamp(settings.magazineLimit, 0, allAmmoCount);
         allAmmoCount -= magazin;
         locked = false;
+    }
+    public void GunAim(bool value)
+    {
+        aiming = value;
+        gunAnimator.SetBool("Aim", aiming);
     }
 
     public void GunFire(bool value)

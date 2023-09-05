@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GunInteraction : MonoBehaviour
-{
-    [SerializeField] private Gun currentGun;
+{   
+    public Gun currentGun;
     public void OnReload()
     {
         currentGun.StartGunReload();
@@ -14,5 +14,10 @@ public class GunInteraction : MonoBehaviour
     {
         float value = input.Get<float>();
         currentGun.GunFire(value>0);
+    }
+    public void OnAim(InputValue input)
+    {
+        float value = input.Get<float>();
+        currentGun.GunAim(value > 0);
     }
 }
