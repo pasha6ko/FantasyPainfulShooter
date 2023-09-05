@@ -14,6 +14,5 @@ public class Bullet : MonoBehaviour
         IDamageble hp = other.transform.GetComponent<IDamageble>();
         if(hp!=null) hp.TakeDamage(bulletDamage);
         Destroy(gameObject);
-
     }
 }

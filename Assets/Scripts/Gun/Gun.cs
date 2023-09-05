@@ -7,7 +7,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private GunSettings settings;
     [SerializeField] private Transform mainCamera;
     [SerializeField] private Transform muzzle;
-    [SerializeField] Transform AimPoint;
+    [SerializeField] private Animator gunAnimator;
     [SerializeField] private int allAmmoCount;
     [SerializeField] private int magazin;
     [SerializeField] private bool trigger, locked;// Make ful private after all
@@ -17,51 +17,53 @@ public class Gun : MonoBehaviour
     void Start()
     {
         trigger = false;
-        ReloadGun();
+        gunAnimator.SetFloat("FireSpeed", settings.fireSpeed);
+        StartGunReload();
     }
 
+    public void StartGunReload()
+    {
+        locked = true;
+        gunAnimator.SetTrigger("Reload");
+    }
     public void ReloadGun()
     {
         magazin = Mathf.Clamp(settings.magazineLimit, 0, allAmmoCount);
         allAmmoCount -= magazin;
+        locked = false;
     }
 
     public void GunFire(bool value)
     {
         trigger = value;
+
         if (!trigger) return;
         if (_firePricess != null) return;
+        if (locked) return;
         _firePricess = StartCoroutine(Fire());
     }
-    private void SpawnBullet()
+    private void BulletFire()
     {
-        GameObject bulletClone = Instantiate(settings.bulletPrefab, muzzle.position,muzzle.rotation);
-        Rigidbody bulletRb = bulletClone.transform.GetComponent<Rigidbody>();
-        bulletRb.AddForce(muzzle.forward * settings.bulletSpeed, ForceMode.VelocityChange);
+        Ray ray = new Ray (mainCamera.position, mainCamera.forward);
+        RaycastHit hit;
+        if (!Physics.Raycast(ray, out hit)) return;
+        Debug.DrawLine(mainCamera.position, hit.point, Color.red, 10f);
+        IDamageble hp = hit.transform.GetComponent<IDamageble>();
+        if (hp == null) return;
+        hp.TakeDamage(settings.damage);
     }
     IEnumerator Fire()
     {
-        while (magazin > 0)
+        gunAnimator.SetBool("Fire", true);
+        while (magazin > 0 && !locked)
         {
             if (!trigger) break;
-            SpawnBullet();
+            BulletFire();
             magazin--;
             yield return new WaitForSeconds(1f / settings.fireSpeed);
         }
         _firePricess = null;
-    }
-    float currentAngle;
-    private IEnumerator Recoil(float angle, float speed)
-    {
-        currentAngle -= angle;
-        transform.localRotation = Quaternion.Euler(mainCamera.transform.localRotation.eulerAngles.x + currentAngle, 0, 0);
-        while (currentAngle < 0)
-        {
-            currentAngle += speed * Time.deltaTime;
-            currentAngle = Mathf.Min(currentAngle, 0);
-            transform.localRotation = Quaternion.Euler(mainCamera.transform.localRotation.eulerAngles.x + speed * Time.deltaTime, 0, 0);
-            yield return null;
-        }
+        gunAnimator.SetBool("Fire", false);
     }
 }
 
@@ -70,6 +72,6 @@ public class GunSettings
 {
     public string name;
     public GameObject bulletPrefab;
-    [Range(0, 300f)] public float fireSpeed, bulletSpeed, coolingTime, reloadTime, switchTime, fireRange, recoilAngle, recoilSpeed;
+    [Range(0, 300f)] public float fireSpeed, bulletSpeed, coolingTime, reloadTime, switchTime, damage, fireRange, recoilAngle, recoilSpeed;
     public int magazineLimit;
 }

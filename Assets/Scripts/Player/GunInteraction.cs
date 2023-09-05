@@ -8,7 +8,7 @@ public class GunInteraction : MonoBehaviour
     [SerializeField] private Gun currentGun;
     public void OnReload()
     {
-        currentGun.ReloadGun();
+        currentGun.StartGunReload();
     }
     public void OnFire(InputValue input)
     {

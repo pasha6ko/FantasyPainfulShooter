@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Stay,
         Run,
-        WallRun,
         InAir,
         InAirRun
     }
@@ -30,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     {
         float magnitude = _inputVector.magnitude;
         bool inAir = movementState == MovementStates.InAir;
-        if (movementState == MovementStates.WallRun) return;
         playerRb.useGravity = true;
         if (!inAir)
         {
@@ -56,14 +54,9 @@ public class PlayerMovement : MonoBehaviour
         _inputVector = input.Get<Vector2>();
     }
 
-    public void OnWallRun()
-    {
-        movementState = MovementStates.WallRun;
-    }
-
     public void OnJump()
     {
-        if (!IsGrounded() && movementState != MovementStates.WallRun) return;
+        if (!IsGrounded()) return;
         playerRb.velocity = new Vector3(playerRb.velocity.x, jumpForce, playerRb.velocity.z);
         movementState = MovementStates.InAirRun;
     }
