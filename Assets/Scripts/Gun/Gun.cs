@@ -1,6 +1,7 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 public class Gun : MonoBehaviour
 {
     [Header("Components")]
@@ -26,6 +27,7 @@ public class Gun : MonoBehaviour
 
     public void StartGunReload()
     {
+        if (locked) return;
         locked = true;
         gunAnimator.SetTrigger("Reload");
     }
@@ -48,25 +50,41 @@ public class Gun : MonoBehaviour
         if (!trigger) return;
         if (_firePricess != null) return;
         if (locked) return;
-        _firePricess = StartCoroutine(Fire());
+        _firePricess = StartCoroutine(FireProcees());
     }
-    private void BulletFire()
+    private void Fire()
     {
-        Ray ray = new Ray (mainCamera.position, mainCamera.forward);
+        Vector3 direction = mainCamera.transform.forward;
+        direction =  direction + mainCamera.transform.right * Random.RandomRange(-settings.fireRange, settings.fireRange) / 300;
+
+        Ray ray = new Ray(mainCamera.position, direction);
         RaycastHit hit;
-        if (!Physics.Raycast(ray, out hit)) return;
+
+        if (!Physics.Raycast(ray, out hit, maxDistance: settings.fireDistance)) return;
+
         Debug.DrawLine(mainCamera.position, hit.point, Color.red, 10f);
         IDamageble hp = hit.transform.GetComponent<IDamageble>();
         if (hp == null) return;
         hp.TakeDamage(settings.damage);
     }
-    IEnumerator Fire()
+    IEnumerator FireProcees()
     {
         gunAnimator.SetBool("Fire", true);
         while (magazin > 0 && !locked)
         {
             if (!trigger) break;
-            BulletFire();
+            if (settings.isShotGun)
+            {
+                print("FireProcces");
+                for (int i = 0; i < settings.bulletsPerShoot; i++)
+                {
+                    Fire();
+                }
+            }
+            else
+            {
+                Fire();
+            }
             magazin--;
             yield return new WaitForSeconds(1f / settings.fireSpeed);
         }
@@ -75,11 +93,3 @@ public class Gun : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class GunSettings
-{
-    public string name;
-    public GameObject bulletPrefab;
-    [Range(0, 300f)] public float fireSpeed, bulletSpeed, coolingTime, reloadTime, switchTime, damage, fireRange, recoilAngle, recoilSpeed;
-    public int magazineLimit;
-}

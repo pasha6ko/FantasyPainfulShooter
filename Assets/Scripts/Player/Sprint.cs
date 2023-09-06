@@ -42,10 +42,8 @@ public class Sprint : MonoBehaviour
         {
             stamina -= Time.deltaTime * maxStamina / timeToFullLose;
             stamina = Mathf.Clamp(stamina, 0, maxStamina);
-            print("Sprint");
             return;
         }
-        print("Lock");
         if (speedMultiplier <= 0)
         {
             stamina += Time.deltaTime * maxStamina / timeToFullLose;

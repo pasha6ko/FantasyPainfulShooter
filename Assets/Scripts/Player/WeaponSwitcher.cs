@@ -30,7 +30,6 @@ public class WeaponSwitcher : MonoBehaviour
     }
     private void SetWeaponByIndex(int index)
     {
-        print(index);
         if(_currentWeaon != null) _currentWeaon.SetActive(false);
         _currentWeaon = weaponPrefs[index];
         _currentWeaon.SetActive(true);
