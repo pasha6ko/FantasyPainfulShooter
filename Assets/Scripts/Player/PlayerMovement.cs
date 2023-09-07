@@ -44,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
         if (!IsGrounded()) return;
         playerRb.velocity = new Vector3(playerRb.velocity.x, jumpForce, playerRb.velocity.z);
         movementState = MovementStates.InAirRun;
+
+        print("jump");
     }
 
     public bool IsGrounded()

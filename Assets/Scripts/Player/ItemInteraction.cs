@@ -6,6 +6,7 @@ public class ItemInteraction : MonoBehaviour
 {
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float pickUpMaxDistance;
+
     private void FixedUpdate()
     {
         IPickable item;
@@ -28,7 +29,7 @@ public class ItemInteraction : MonoBehaviour
     {
         IPickable item;
         if (!RaycastForItem(out item)) return;
-        item.PickUp(transform);
+        item.PickUpItem(transform);
     }
 
 }

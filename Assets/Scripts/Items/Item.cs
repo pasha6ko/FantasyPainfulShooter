@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 interface IPickable
 {
-    public void PickUp(Transform player);
+    public void PickUpItem(Transform player);
 }
 
-public class Item : MonoBehaviour
+[CreateAssetMenu(fileName = "Item", menuName = "Items/Item")]
+public class Item : ScriptableObject
 {
-    public string name;
-    public Image image;
-    public GameObject itemPrefab;
-
+    public string itemName;
+    public Sprite itemSprite;
+    public int itemPrice;
+    public int itemSale;
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,14 +6,12 @@ public class PlayerLook : MonoBehaviour
     [Header("Player Components")]
     [SerializeField] private Transform cam;
     [SerializeField] private Transform player;
+
     [Header("Camera Settings")]
     [SerializeField] private float rotationSensivity;
+
     private Vector2 _inputVector;
 
-    private void Start()
-    {
-        LockCursor();
-    }
     private void Update()
     {
         float eulerX = (-_inputVector.y * rotationSensivity) % 360;
@@ -26,11 +22,6 @@ public class PlayerLook : MonoBehaviour
         player.rotation = Quaternion.Euler(targetYRotation);
         cam.localRotation = Quaternion.Euler(targetXRotation);
         _inputVector = Vector2.zero;
-    }
-
-    private void LockCursor()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void OnLook(InputValue input)
