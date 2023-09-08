@@ -37,7 +37,6 @@ public class Sprint : MonoBehaviour
         }
         
         if (_lockeAutoRecovery) return;
-        
         if (speedMultiplier > 0)
         {
             stamina -= Time.deltaTime * maxStamina / timeToFullLose;

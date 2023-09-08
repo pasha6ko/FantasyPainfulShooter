@@ -24,6 +24,9 @@
 /[Aa]ssets/Plugins/Editor/JetBrains*
 
 # Packages
+Packages/*
+Assets/Packages/*
+Assets/Settings/*
 Assets/Thirdparty/*
 Assets/LowPolyWeapons_LITE/*
 
