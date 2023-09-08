@@ -37,7 +37,13 @@ public class SwitchInventory : MonoBehaviour
     public void OnDeleteItems()
     {
         if (!_isInventoryOpened) return;
-        itemLibrary.DeleteItems();
+        itemLibrary.DeleteItems(false);
+    }
+
+    public void OnUseItems()
+    {
+        if (!_isInventoryOpened) return;
+        itemLibrary.DeleteItems(true);
     }
 
     private void SetCursor()

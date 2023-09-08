@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 public class Gun : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] private GunSettings settings;
+    [SerializeField] public GunSettings settings;
     [SerializeField] private Transform mainCamera;
     [SerializeField] private Transform muzzle;
     [SerializeField] private Animator gunAnimator;

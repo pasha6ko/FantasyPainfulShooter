@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Collider playerCollider;
 
     [Header("Player Movenet Settings")]
-    [SerializeField, Range(0f, 10f)] private float speed;
+    [SerializeField, Range(0f, 10f)] public float speed;
     [SerializeField, Range(0f, 20f)] private float jumpForce;
     
 

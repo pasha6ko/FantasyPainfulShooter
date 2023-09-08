@@ -7,6 +7,9 @@ public class ItemLibrary : MonoBehaviour
     [Header("Slots Objects")]
     [SerializeField] public List<GameObject> slots;
 
+    [Header("Items Effects")]
+    [SerializeField] private PotionsEffects effects;
+
     public bool AddItem(Item item)
     {
         foreach (GameObject slot in slots)
@@ -23,13 +26,15 @@ public class ItemLibrary : MonoBehaviour
         return false;
     }
 
-    public void DeleteItems()
+    public void DeleteItems(bool isUsing)
     {
         foreach (GameObject slot in slots)
         {
             InventorySlot inventorySlot = slot.GetComponent<InventorySlot>();
 
             if (!inventorySlot.isChoosed) continue;
+            if (isUsing) UseItem(inventorySlot.item.itemType);
+
             inventorySlot.item = null;
             inventorySlot.isChoosed = false;
             inventorySlot.isHighlighted = false;
@@ -40,6 +45,28 @@ public class ItemLibrary : MonoBehaviour
             Image itemImage = slot.transform.GetChild(0).GetComponent<Image>();
             itemImage.sprite = null;
             itemImage.enabled = false;
+        }
+    }
+
+    private void UseItem(Item.Types type)
+    {
+        switch (type)
+        {
+            case Item.Types.Damage:
+                StartCoroutine(effects.Damage(2));
+                break;
+
+            case Item.Types.Heal:
+                effects.Heal(20);
+                break;
+
+            case Item.Types.Shield:
+                StartCoroutine(effects.MaxArmor(200));
+                break;
+
+            case Item.Types.Speed:
+                StartCoroutine(effects.Speed(1.5f));
+                break;
         }
     }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HealPotion
   m_EditorClassIdentifier: 
   itemName: Heal
-  itemSprite: {fileID: 21300000, guid: 42fe96444bc61dd4982d6dea06691b62, type: 3}
-  itemPrice: 10
-  itemSale: 8
+  itemSprite: {fileID: -1177891066, guid: 0f4889632d0be9e41b4a49a14d99e5ab, type: 3}
+  itemPrice: 50
+  itemSale: 10
+  itemType: 3

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56487201a1499044883131dbd17099fe, type: 3}
-  m_Name: Damagepotion
+  m_Name: AmmoItem
   m_EditorClassIdentifier: 
-  itemName: DamagePotion
-  itemSprite: {fileID: 800350147, guid: 0f4889632d0be9e41b4a49a14d99e5ab, type: 3}
-  itemPrice: 80
-  itemSale: 20
-  itemType: 2
+  itemName: Ammo
+  itemSprite: {fileID: 0}
+  itemPrice: 15
+  itemSale: 5
+  itemType: 0

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56487201a1499044883131dbd17099fe, type: 3}
-  m_Name: ShieldPorion
+  m_Name: (Rare)ArtifactItem
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Artifact
   itemSprite: {fileID: 0}
   itemPrice: 0
-  itemSale: 0
+  itemSale: 100
+  itemType: 0

@@ -9,9 +9,12 @@ interface IDamageble
     public void ResetHp();
     public void Die();
 }
+
 public class PlayerHp : MonoBehaviour, IDamageble
 {
-    [SerializeField] private float startHp, hp, maxArmor, armor;
+    [SerializeField] private float startHp, hp;
+    [SerializeField] public float maxArmor;
+    [SerializeField] private float armor;
 
     private void Start()
     {

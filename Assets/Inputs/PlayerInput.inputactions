@@ -121,6 +121,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "UseItems",
+                    "type": "Button",
+                    "id": "72ed3c9a-b75b-4c03-89e5-f3c89b8c4b25",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -506,6 +515,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "DeleteItems",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b342fb89-fcc0-480b-afa9-73cdad5514be",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "UseItems",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
