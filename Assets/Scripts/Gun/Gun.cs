@@ -67,15 +67,18 @@ public class Gun : MonoBehaviour
         if (hp == null) return;
         hp.TakeDamage(settings.damage);
     }
-    IEnumerator FireProcees()
+    private IEnumerator FireProcees()
     {
         gunAnimator.SetBool("Fire", true);
         while (magazin > 0 && !locked)
         {
-            if (!trigger) break;
+            if (!trigger)
+            {
+                gunAnimator.SetBool("Fire", false);
+                break;
+            }
             if (settings.isShotGun)
             {
-                print("FireProcces");
                 for (int i = 0; i < settings.bulletsPerShoot; i++)
                 {
                     Fire();
@@ -90,6 +93,7 @@ public class Gun : MonoBehaviour
         }
         _firePricess = null;
         gunAnimator.SetBool("Fire", false);
+
     }
 }
 

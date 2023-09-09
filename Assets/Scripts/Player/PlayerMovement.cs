@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     public bool IsGrounded()
     {
         float _distanceToTheGround = playerCollider.bounds.extents.y;
-        return Physics.Raycast(playerRb.position, Vector3.down, _distanceToTheGround + 0.01f);
+        return Physics.Raycast(playerRb.position, Vector3.down, _distanceToTheGround + 0.1f);
     }
 
     private void Run()

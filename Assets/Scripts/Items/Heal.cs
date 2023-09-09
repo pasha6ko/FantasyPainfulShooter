@@ -10,5 +10,6 @@ public class Heal : MonoBehaviour, IPickable
         PlayerHp hp = player.GetComponent<PlayerHp>();
         if (hp == null) return;
         hp.Heal(healValue);
+        
     }
 }

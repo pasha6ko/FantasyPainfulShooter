@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IDamageble
-{
-    public void TakeDamage(float damageValue);
-    public void Heal(float healValue);
-    public void ResetHp();
-    public void Die();
-}
 
-public class PlayerHp : MonoBehaviour, IDamageble
+
+public class PlayerHp : Hp
 {
-    [SerializeField] private float startHp, hp;
     [SerializeField] public float maxArmor;
     [SerializeField] private float armor;
 
@@ -20,12 +13,12 @@ public class PlayerHp : MonoBehaviour, IDamageble
     {
         ResetHp();
     }
-    public void Die()
+    override public void Die()
     {
         Destroy(gameObject);
     }
 
-    public void Heal(float healValue)
+    override public void Heal(float healValue)
     {
         hp += healValue;
         hp = Mathf.Clamp(hp, 0, startHp);
@@ -36,12 +29,12 @@ public class PlayerHp : MonoBehaviour, IDamageble
         armor += armorValue;
         armor = Mathf.Clamp(armor, 0, maxArmor);
     }
-    public void ResetHp()
+    override public void ResetHp()
     {
         hp = startHp;
     }
 
-    public void TakeDamage(float damageValue)
+    override public void TakeDamage(float damageValue)
     {
         if (damageValue > 0)
         {
