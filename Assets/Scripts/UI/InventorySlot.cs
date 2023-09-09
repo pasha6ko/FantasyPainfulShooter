@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,6 +7,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     [HideInInspector] public bool isChoosed = false;
     [HideInInspector] public bool isHighlighted = false;
+
+    [Header("Description Block Componnets")]
+    [SerializeField] private GameObject descriptionBlock;
+    [SerializeField] private Image descriptionImage;
+    [SerializeField] private TextMeshProUGUI descriptionTitle;
+    [SerializeField] private TextMeshProUGUI descriptionDescription;
 
     [Header("Slot Component")]
     [SerializeField] public Item item;
@@ -22,12 +29,20 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (item != null)
+        {
+            descriptionBlock.SetActive(true);
+            SetDescription();
+        }
+
         if (isHighlighted) return;
         SetSlotColor(highlightColor);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        descriptionBlock.SetActive(false);
+
         if (isHighlighted) return;
         SetSlotColor(normalColor);
     }
@@ -47,5 +62,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (slot == null) return;
         slot.color = color;
+    }
+
+    private void SetDescription()
+    {
+        descriptionImage.sprite = item.itemSprite;
+        descriptionTitle.text = item.itemName;
+        descriptionDescription.text = item.itemDescription;
     }
 }

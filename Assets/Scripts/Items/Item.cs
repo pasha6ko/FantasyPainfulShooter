@@ -1,4 +1,6 @@
+using System.Net.Http;
 using UnityEngine;
+using UnityEngine.UI;
 
 interface IPickable
 {
@@ -23,4 +25,5 @@ public class Item : ScriptableObject
     public int itemPrice;
     public int itemSale;
     public Types itemType;
+    [TextArea] public string itemDescription;
 }

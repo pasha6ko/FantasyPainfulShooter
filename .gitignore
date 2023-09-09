@@ -29,6 +29,7 @@ Assets/Packages/*
 Assets/Settings/*
 Assets/Thirdparty/*
 Assets/LowPolyWeapons_LITE/*
+Assets/TextMesh Pro/*
 
 # Visual Studio cache directory
 .vs/
