@@ -15,7 +15,7 @@ public class PotionsEffects : MonoBehaviour
     {
         _playerMovement = GetComponent<PlayerMovement>();
         _playerHp = GetComponent<PlayerHp>();
-        _gunSettings = GetComponent<GunInteraction>().currentGun.settings;
+        //_gunSettings = GetComponent<GunInteraction>().currentGun.settings;
     }
 
     public IEnumerator Damage(float value)
@@ -39,13 +39,11 @@ public class PotionsEffects : MonoBehaviour
         if (_isUsedShield) yield break;
         _isUsedShield = true;
 
-        float shield = _playerHp.maxArmor;
-        _playerHp.maxArmor = value;
-        _playerHp.AddArmor(value);
+        _playerHp.MergeArmor();
 
         yield return new WaitForSeconds(_time);
 
-        _playerHp.maxArmor = shield;
+        _playerHp.UnmergeArmor();
         _isUsedShield = false;
     }
 

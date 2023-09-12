@@ -45,7 +45,7 @@ Transform:
   m_Children:
   - {fileID: 5328553638958819815}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5226371467312460581
 MeshFilter:
@@ -250,10 +250,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d92cde129d04464b80e557ae3d1975e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHp: 100
-  hp: 0
-  maxArmor: 0
-  armor: 0
+  containers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  emptyContainer: {fileID: 653494281, guid: 6fcbe8f95191d0e48a3f6ddd80df7ec1, type: 3}
+  halfContainer: {fileID: 102061695, guid: 6fcbe8f95191d0e48a3f6ddd80df7ec1, type: 3}
+  fullContainer: {fileID: -490455135, guid: 6fcbe8f95191d0e48a3f6ddd80df7ec1, type: 3}
+  armorContainers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  emptyArmorContainer: {fileID: -1519959913, guid: 6fcbe8f95191d0e48a3f6ddd80df7ec1,
+    type: 3}
+  halfArmorContainer: {fileID: 80450657, guid: 6fcbe8f95191d0e48a3f6ddd80df7ec1, type: 3}
+  fullArmorContainer: {fileID: -1760530048, guid: 6fcbe8f95191d0e48a3f6ddd80df7ec1,
+    type: 3}
+  armorContainersPlus:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  armorGroupPlus: {fileID: 0}
+  _maxArmorValue: 0
 --- !u!114 &4978458153240451756
 MonoBehaviour:
   m_ObjectHideFlags: 0

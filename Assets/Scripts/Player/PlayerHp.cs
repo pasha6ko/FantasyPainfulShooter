@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
 
 public class PlayerHp : Hp
 {
-    [SerializeField] public float maxArmor;
-    [SerializeField] private float armor;
-
-    private void Start()
-    {
-        ResetHp();
-    }
     override public void Die()
     {
         Destroy(gameObject);
@@ -20,31 +11,36 @@ public class PlayerHp : Hp
 
     override public void Heal(float healValue)
     {
-        hp += healValue;
-        hp = Mathf.Clamp(hp, 0, startHp);
+        currentValue += healValue;
+        UpdateHP();
     }
 
     public void AddArmor(float armorValue)
     {
-        armor += armorValue;
-        armor = Mathf.Clamp(armor, 0, maxArmor);
-    }
-    override public void ResetHp()
-    {
-        hp = startHp;
+        _currentArmorValue += armorValue;
+        _currentArmorValue = Mathf.Clamp(_currentArmorValue, 0, _maxArmorValue);
+        UpdateArmor();
     }
 
-    override public void TakeDamage(float damageValue)
+    public void TakeDamage(float damageValue)
     {
-        if (damageValue > 0)
+        if (damageValue <= 0) return;
+        if (damageValue > _currentArmorValue)
         {
-            float armorDamage = armor;
-            armor -= damageValue;
-            if (armor <= 0) damageValue -= armorDamage;
-            armor = Mathf.Clamp(armor,0, maxArmor);
+            damageValue -= _currentArmorValue;
+            _currentArmorValue = 0;
+            currentValue -= damageValue;
+
+            UpdateArmor();
+            UpdateHP();
         }
-        hp -= damageValue;
-        hp = Mathf.Clamp(hp, 0, startHp);
-        if (hp <= 0f) Die();
+        else
+        {
+            _currentArmorValue -= damageValue;
+            UpdateArmor();
+        }
+        if (currentValue <= 0f) Die();
+        if (_armorCoroutine != null) return;
+        _armorCoroutine = StartCoroutine(ArmorRecovery());
     }
 }
