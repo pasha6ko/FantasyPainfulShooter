@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] protected GameObject zombieSound;
     protected Action TargetFounded, TargetLosted;
     protected Transform player;
-    Coroutine _searching, _activeProcces;
+    protected Coroutine _searching, _activeProcces;
 
     public enum Mode
     {
@@ -37,7 +37,7 @@ public class EnemyAI : MonoBehaviour
         agent.speed = walkSpeed;
         state = Mode.Idle;
     }
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (Vector3.Distance(transform.position, agent.destination) < 0.1)
             Stop();
@@ -52,24 +52,28 @@ public class EnemyAI : MonoBehaviour
             if (isMoving) agent.speed = walkSpeed;
         
     }
-    private void Stop()
+    protected void Stop()
     {
         agent.speed = 0f;
         agent.destination = transform.position;
     }
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
         player = other.transform;
     }
+
     virtual protected void Attack()
     {
         animator.SetTrigger("Attack");
     }
     virtual protected void FoundTrager()
     {
-        StopCoroutine(_searching);
-        _searching = null;
+        if (_searching != null)
+        {
+            StopCoroutine(_searching);
+            _searching = null;
+        }
         if (_activeProcces == null)
             _activeProcces = StartCoroutine(ActiveProcces());
     }
@@ -115,7 +119,7 @@ public class EnemyAI : MonoBehaviour
         }
         return false;
     }
-    IEnumerator SearchProcces()
+    protected IEnumerator SearchProcces()
     {
         state = Mode.Search;
         while (true)
@@ -126,7 +130,7 @@ public class EnemyAI : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(6f, 20f));
         }
     }
-    IEnumerator ActiveProcces()
+    protected IEnumerator ActiveProcces()
     {
         state = Mode.Active;
         while (true)

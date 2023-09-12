@@ -6,15 +6,16 @@ public class DamageZone : MonoBehaviour
 {
     [SerializeField] private float damage;
     [SerializeField] private DamageZone damageZone;
-    private PlayerHp _hp;
+    [SerializeField] private PlayerHp _hp;
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player")) return;
+        if (_hp != null) return;
         _hp = other.transform.GetComponent<PlayerHp>();
     }
 
     private void OnTriggerExit(Collider other)
     {
-
         if (other.transform.GetComponent<PlayerHp>() != _hp) return;
         _hp = null;
     }
