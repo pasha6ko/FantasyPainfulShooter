@@ -14,7 +14,6 @@ public class PlayerHp : Hp
     [SerializeField] private Sprite emptyArmorContainer, halfArmorContainer, fullArmorContainer;
 
     public ContainerValueSystem armor = new ContainerValueSystem();
-    private Coroutine _armorCoroutine;
 
     private void Start()
     {

@@ -11,10 +11,20 @@ public class SwitchInventory : MonoBehaviour
 
     [Header("Inventory Components")]
     [SerializeField] private GameObject bigInventory;
+    [SerializeField] private GameObject shop;
 
     private ItemLibrary itemLibrary;
     private List<GameObject> _slots;
     private bool _isInventoryOpened = false;
+
+    public bool isInventoryOpened
+    {
+        get => _isInventoryOpened;
+        set
+        {
+            _isInventoryOpened = value;
+        }
+    }
 
     private void Start()
     {
@@ -48,7 +58,7 @@ public class SwitchInventory : MonoBehaviour
 
     private void SetCursor()
     {
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
 
         if (_isInventoryOpened) return;
         Cursor.lockState = CursorLockMode.Locked;
@@ -59,6 +69,8 @@ public class SwitchInventory : MonoBehaviour
         playerMovement.enabled = !_isInventoryOpened;
         playerLook.enabled = !_isInventoryOpened;
         gunInteraction.enabled = !_isInventoryOpened;
+
+        shop.SetActive(false);
     }
 
     private void InventorySwitch()

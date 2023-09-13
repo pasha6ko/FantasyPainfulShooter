@@ -51,7 +51,7 @@ public class Sprint : MonoBehaviour
         UpdateUI();
         if (stamina.currentValue <= 0)
         {
-            
+            StartCoroutine(FullStaminaRecovery());
             return;
         }
         if (_lockeAutoRecovery) return;

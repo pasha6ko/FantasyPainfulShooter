@@ -8,6 +8,6 @@ public class AxisRotation : MonoBehaviour
     [SerializeField] private float angle;
     void Update()
     {
-        transform.RotateAroundLocal(direction, angle * Time.deltaTime);
+        transform.Rotate(direction, angle * Time.deltaTime);
     }
 }

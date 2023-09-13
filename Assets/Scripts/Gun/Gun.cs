@@ -55,7 +55,7 @@ public class Gun : MonoBehaviour
     private void Fire()
     {
         Vector3 direction = mainCamera.transform.forward;
-        direction =  direction + mainCamera.transform.right * Random.RandomRange(-settings.fireRange, settings.fireRange) / 300;
+        direction =  direction + mainCamera.transform.right * Random.Range(-settings.fireRange, settings.fireRange) / 300;
 
         Ray ray = new Ray(mainCamera.position, direction);
         RaycastHit hit;
