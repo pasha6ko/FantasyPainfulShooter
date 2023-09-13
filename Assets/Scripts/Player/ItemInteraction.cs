@@ -7,29 +7,22 @@ public class ItemInteraction : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float pickUpMaxDistance;
 
-    private void FixedUpdate()
-    {
-        IPickable item;
-        if (!RaycastForItem(out item)) return;
-
-    }
-
-    private bool RaycastForItem(out IPickable pickableItem)
+    private bool RaycastForItem(out IInteractble pickableItem)
     {
         pickableItem = null;
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         RaycastHit hit;
         if (!Physics.Raycast(ray, out hit, maxDistance: pickUpMaxDistance)) return false;
-        IPickable item = hit.transform.GetComponent<IPickable>();
+        IInteractble item = hit.transform.GetComponent<IInteractble>();
         if (item == null) return false;
         pickableItem = item;
         return true;
     }
     public void OnInteract()
     {
-        IPickable item;
+        IInteractble item;
         if (!RaycastForItem(out item)) return;
-        item.PickUpItem(transform);
+        item.Interact(transform);
     }
 
 }

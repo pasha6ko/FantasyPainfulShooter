@@ -23,7 +23,8 @@ public class LongRangeEnemyAI : EnemyAI
 
     protected override void Attack()
     {
-        
+        GameObject bulletClone = Instantiate(bullet, firePoint.position, Quaternion.LookRotation(player.position-firePoint.position));
+        Debug.Break();
     }
 
     protected override void FixedUpdate()

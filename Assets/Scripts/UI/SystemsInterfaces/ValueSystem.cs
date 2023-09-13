@@ -23,10 +23,10 @@ public class ValueSystem
         set { _currentSystemsValue = Mathf.Clamp(value, 0, maxValue); }
     }
 
-    public ValueSystem()
+    public ValueSystem(int level = 0)
     {
         levelMultiplier = 1.5f;
-        SetLevel(0);
+        SetLevel(level);
         currentValue = maxValue;
     }   
 
