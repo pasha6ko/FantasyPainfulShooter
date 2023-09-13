@@ -1,36 +1,43 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ValueSystem : MonoBehaviour
+public abstract class ValueSystem
 {
+    public readonly int currentLevel;
+
     protected float _maxSystemsValue;
     protected float _currentSystemsValue;
 
-    protected float _containerValue = 10f;
-    protected float _fullContainers;
-    protected float _halfContainers;
-    protected float _emptyContainers;
-
-    public float maxValue
+    private float levelMultiplier;
+   
+    virtual public float maxValue
     {
         get => _maxSystemsValue;
-        set { _maxSystemsValue = value > 100 ? value : 100; }
+        set { 
+            _maxSystemsValue = value > 100 ? value : 100;
+        }
     }
-
     public float currentValue
     {
         get => _currentSystemsValue;
         set { _currentSystemsValue = Mathf.Clamp(value, 0, maxValue); }
     }
 
-    private void Start()
+    public ValueSystem()
     {
-        UpdateContainers();
+        levelMultiplier = 1.5f;
+        SetUpgradeLevel(0);
+        currentValue = maxValue;
     }
 
-    protected void UpdateContainers()
+    
+    public void SetUpgradeLevel(int value)
     {
-        _fullContainers = currentValue / _containerValue - currentValue % _containerValue / _containerValue;
-        _halfContainers = (currentValue % _containerValue) / (_containerValue / 2);
-        _emptyContainers = (maxValue - currentValue - currentValue % _containerValue) / _containerValue;
+        maxValue = 100;
+        maxValue = maxValue * Mathf.Pow(levelMultiplier, value);
+        _currentSystemsValue = value;
     }
+
+    
+
 }

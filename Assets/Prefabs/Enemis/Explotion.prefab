@@ -185,7 +185,7 @@ Transform:
   - {fileID: 5381283863039884650}
   - {fileID: 76378905279999433}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &5324477441491011110
 CapsuleCollider:
@@ -245,7 +245,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6161397070203631498}
   m_Enabled: 1
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 0
   m_Radius: 0.38
   m_Speed: 3.5
   m_Acceleration: 8
@@ -292,8 +292,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a6b20a9675e1d4789231b003a5dbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHp: 100
-  hp: 0
+  containers: []
+  emptyContainer: {fileID: 0}
+  halfContainer: {fileID: 0}
+  fullContainer: {fileID: 0}
+  armorContainers: []
+  emptyArmorContainer: {fileID: 0}
+  halfArmorContainer: {fileID: 0}
+  fullArmorContainer: {fileID: 0}
+  armorContainersPlus: []
+  armorGroupPlus: {fileID: 0}
+  _maxArmorValue: 0
 --- !u!114 &2225952288624248126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +327,7 @@ MonoBehaviour:
   trigger: {fileID: 861327230799209261}
   detectionSound: {fileID: 0}
   zombieSound: {fileID: 0}
-  explosionTriggerDistance: 3
+  player: {fileID: 0}
 --- !u!1 &6665576210190468217
 GameObject:
   m_ObjectHideFlags: 0

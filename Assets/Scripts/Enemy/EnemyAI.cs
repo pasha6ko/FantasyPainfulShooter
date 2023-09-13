@@ -39,6 +39,7 @@ public class EnemyAI : MonoBehaviour
     }
     protected virtual void FixedUpdate()
     {
+        print(IsSeePlayer());
         if (Vector3.Distance(transform.position, agent.destination) < 0.1)
             Stop();
         animator.SetFloat("Speed", agent.speed);
@@ -78,7 +79,7 @@ public class EnemyAI : MonoBehaviour
         if (_searching != null)
         {
             StopCoroutine(_searching);
-            _searching = null;
+            _searching = null;  
         }
         if (_activeProcces == null)
             _activeProcces = StartCoroutine(ActiveProcces());
@@ -102,6 +103,7 @@ public class EnemyAI : MonoBehaviour
             TargetLosted.Invoke();
             return false;
         }
+        if (player != null && state == Mode.Active) return true;
 
         Vector3 direction = player.position - transform.position;
         Vector3 angle = Quaternion.FromToRotation(transform.forward, direction).eulerAngles;
@@ -127,7 +129,7 @@ public class EnemyAI : MonoBehaviour
     virtual protected IEnumerator ActiveProcces()
     {
         state = Mode.Active;
-        while (true)
+        while (state == Mode.Active)
         {
             if (isMoving) agent.speed = runSpeed;
             agent.SetDestination(player.position);
