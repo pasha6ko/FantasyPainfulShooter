@@ -15,8 +15,6 @@ public class PlayerHp : Hp
 
     protected ContainerValueSystem armor = new ContainerValueSystem();
 
-    protected Coroutine _armorRecoveryCoroutine;
-
     private void Start()
     {
         print("Start");

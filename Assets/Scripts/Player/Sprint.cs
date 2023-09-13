@@ -1,38 +1,68 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
-public class Sprint : StaminaSystem
+public class Sprint : MonoBehaviour
 {
-    [Header("Sprint Settings")]
-    [SerializeField] private float speed;
+    public ValueSystem stamina = new ValueSystem();
 
-    private float _speedMultiplier = 0;
+    [Header("Player Components")]
+    [SerializeField] private PlayerMovement movement;
+
+    [Header("UI Componnets")]
+    [SerializeField] private Slider left;
+    [SerializeField] private Slider right;
+
+    [Header("Stamina Settings")]
+    [SerializeField] private float maxStamina;
+    [SerializeField] private float timeToFullLose, timeToFullRecovey;
+    [SerializeField] private float speed;
+    
+    private float _speedMultiplier;
+
+    protected bool _lockeAutoRecovery;
+
+    protected IEnumerator FullStaminaRecovery()
+    {
+        _lockeAutoRecovery = true;
+        movement.SetSprintSpeed(1);
+        while (stamina.currentValue < stamina.maxValue)
+        {
+            stamina.currentValue += Time.deltaTime * stamina.maxValue / timeToFullRecovey;
+            yield return null;
+        }
+        _lockeAutoRecovery = false;
+    }
+
+    protected void UpdateUI()
+    {
+        left.value = stamina.currentValue / stamina.maxValue;
+        right.value = stamina.currentValue / stamina.maxValue;
+    }
 
     private void Start()
     {
         _lockeAutoRecovery = false;
-
-        maxValue = maxStamina;
-        currentValue = maxValue;
     }
 
     private void Update()
     {
         UpdateUI();
-        if (currentValue <= 0)
+        if (stamina.currentValue <= 0)
         {
-            //StartCoroutine(FullStaminaRecovery());
+            
             return;
         }
         if (_lockeAutoRecovery) return;
         if (_speedMultiplier > 0)
         {
-            currentValue -= Time.deltaTime * maxValue / timeToFullLose;
+            stamina.currentValue -= Time.deltaTime * stamina.maxValue / timeToFullLose;
             return;
         }
         if (_speedMultiplier <= 0)
         {
-            currentValue += Time.deltaTime * maxValue / timeToFullLose;
+            stamina.currentValue += Time.deltaTime * stamina.maxValue / timeToFullLose;
             return;
         }
     }
