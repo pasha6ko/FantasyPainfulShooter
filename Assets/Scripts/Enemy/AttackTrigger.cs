@@ -11,5 +11,4 @@ public class AttackTrigger : MonoBehaviour
         if (other.transform.CompareTag("Player")) attackTriggerAction.Invoke();
         print("trigger");
     }
-
 }
