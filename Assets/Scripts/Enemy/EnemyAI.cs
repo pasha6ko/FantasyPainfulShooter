@@ -14,12 +14,12 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] protected float fieldOfView, distanceToPlayer;
     [SerializeField] protected bool isActiveInSearch;
     [SerializeField] protected Animator animator;
-    [SerializeField] private AttackTrigger trigger;
+    [SerializeField] protected AttackTrigger trigger;
     [Header("Sounds")]
     [SerializeField] protected GameObject detectionSound;
     [SerializeField] protected GameObject zombieSound;
     protected Action TargetFounded, TargetLosted;
-    protected Transform player;
+    [SerializeField] protected Transform player;
     protected Coroutine _searching, _activeProcces;
 
     public enum Mode
@@ -29,7 +29,7 @@ public class EnemyAI : MonoBehaviour
         Active,
         Dead
     }
-    private void Start()
+    protected void Start()
     {
         TargetFounded += FoundTrager;
         TargetLosted += LostTarget;
@@ -37,7 +37,7 @@ public class EnemyAI : MonoBehaviour
         agent.speed = walkSpeed;
         state = Mode.Idle;
     }
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (Vector3.Distance(transform.position, agent.destination) < 0.1)
             Stop();
@@ -61,6 +61,12 @@ public class EnemyAI : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         player = other.transform;
+    }
+    protected virtual void OnTriggerExit(Collider other)
+    {
+        if (player == null) return;
+        if (other.transform == player)
+            player = null;  
     }
 
     virtual protected void Attack()
@@ -93,24 +99,12 @@ public class EnemyAI : MonoBehaviour
     {
         if (player == null)
         {
-            LostTarget();
+            TargetLosted.Invoke();
             return false;
         }
+
         Vector3 direction = player.position - transform.position;
         Vector3 angle = Quaternion.FromToRotation(transform.forward, direction).eulerAngles;
-
-        if (Vector3.Distance(transform.position, player.position) < distanceToPlayer)
-        {
-            if (state == Mode.Active) return true;
-        }
-        else
-        {
-            if (state == Mode.Active)
-            {
-                TargetLosted.Invoke();
-            }
-            return false;
-        }
 
         if ((angle.x > 360 - 20 || angle.x < 0 + 20) && (angle.y > 360 - fieldOfView / 2 || angle.y < fieldOfView / 2))
         {
@@ -130,7 +124,7 @@ public class EnemyAI : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(6f, 20f));
         }
     }
-    protected IEnumerator ActiveProcces()
+    virtual protected IEnumerator ActiveProcces()
     {
         state = Mode.Active;
         while (true)
