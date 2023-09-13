@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ContainerValueSystem : ValueSystem
 {
-    public float containerValue { get; private set; }
+    public float containerValue { get; set; }
 
     public override float maxValue
     {
@@ -29,5 +29,12 @@ public class ContainerValueSystem : ValueSystem
         {   { "full", _fullContainers},
             { "half", _halfContainers}
         };
+    }
+
+    public override void SetLevel(int value)
+    {
+        base.SetLevel(value);
+
+        containerValue = containerValue * Mathf.Pow(levelMultiplier, containerValue);
     }
 }

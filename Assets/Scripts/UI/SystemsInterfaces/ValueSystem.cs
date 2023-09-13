@@ -8,7 +8,7 @@ public class ValueSystem
     protected float _maxSystemsValue;
     protected float _currentSystemsValue;
 
-    private float levelMultiplier;
+    protected float levelMultiplier;
    
     virtual public float maxValue
     {
@@ -31,7 +31,7 @@ public class ValueSystem
     }   
 
     
-    public void SetLevel(int value)
+    virtual public void SetLevel(int value)
     {
         maxValue = 100;
         maxValue = maxValue * Mathf.Pow(levelMultiplier, value);

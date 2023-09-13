@@ -13,12 +13,12 @@ public class PlayerHp : Hp
     [SerializeField] private List<Image> armorContainers;
     [SerializeField] private Sprite emptyArmorContainer, halfArmorContainer, fullArmorContainer;
 
-    protected ContainerValueSystem armor = new ContainerValueSystem();
+    public ContainerValueSystem armor = new ContainerValueSystem();
+    private Coroutine _armorCoroutine;
 
     private void Start()
     {
         print("Start");
-        StopCoroutine(ArmorRecovery());
         ResetHp();
         ResetArmor();
         UpdateHp();
@@ -53,10 +53,13 @@ public class PlayerHp : Hp
         }
         else
         {
-            armor.currentValue-= damageValue;
+            armor.currentValue -= damageValue;
         }
         UpdateHp();
         UpdateArmor();
+
+        if (_armorCoroutine != null) return;
+        _armorCoroutine = StartCoroutine(ArmorRecovery());
     }
 
     virtual public void ResetArmor()
@@ -66,7 +69,7 @@ public class PlayerHp : Hp
 
     public void UpgradeArmor()
     {
-        armor.SetLevel(armor.currentLevel+1);
+        armor.SetLevel(armor.currentLevel + 1);
         ResetArmor();
         UpdateArmor();
     }
@@ -82,10 +85,10 @@ public class PlayerHp : Hp
         Dictionary<string, int> containersInfo = hp.GetContainersInfo();
         int half = containersInfo["half"];
         int fulls = containersInfo["full"];
-      
+
         for (int i = 0; i < hpContainers.Count; i++)
         {
-            if(fulls > 0)
+            if (fulls > 0)
             {
                 fulls--;
                 hpContainers[i].sprite = hpFullContainer;
@@ -99,7 +102,7 @@ public class PlayerHp : Hp
             {
                 hpContainers[i].sprite = hpEmptyContainer;
             }
-            
+
         }
     }
 
@@ -126,6 +129,9 @@ public class PlayerHp : Hp
                 armorContainers[i].sprite = emptyArmorContainer;
             }
         }
+        if (armor.currentValue == armor.maxValue) return;
+        if (_armorCoroutine != null) return;
+        _armorCoroutine = null;
     }
 
     virtual protected IEnumerator ArmorRecovery()
@@ -133,7 +139,7 @@ public class PlayerHp : Hp
         while (true)
         {
             yield return new WaitForSeconds(2f);
-            armor.currentValue = Mathf.Clamp(armor.currentValue + armor.containerValue, 0, armor.maxValue);
+            armor.currentValue = Mathf.Clamp(armor.currentValue + armor.containerValue / 2, 0, armor.maxValue);
             UpdateArmor();
         }
     }

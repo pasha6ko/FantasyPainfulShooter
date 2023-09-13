@@ -38,11 +38,16 @@ public class PotionsEffects : MonoBehaviour
         if (_isUsedShield) yield break;
         _isUsedShield = true;
 
-        //_playerHp.MergeArmor();
+        _playerHp.armor.maxValue *= 2;
+        _playerHp.armor.currentValue = _playerHp.armor.maxValue;
+        _playerHp.UpdateArmor();
 
         yield return new WaitForSeconds(_time);
 
-        //_playerHp.UnmergeArmor();
+        _playerHp.armor.maxValue /= 2;
+        _playerHp.armor.currentValue = _playerHp.armor.maxValue;
+        _playerHp.UpdateArmor();
+
         _isUsedShield = false;
     }
 
