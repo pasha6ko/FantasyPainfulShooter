@@ -1,6 +1,4 @@
-using System.Net.Http;
 using UnityEngine;
-using UnityEngine.UI;
 
 interface IPickable
 {

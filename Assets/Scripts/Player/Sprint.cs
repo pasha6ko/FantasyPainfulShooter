@@ -1,69 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Sprint : MonoBehaviour
+public class Sprint : StaminaSystem
 {
-    [SerializeField] private PlayerMovement movement;
-    [SerializeField] private float maxStamina, stamina;
-    [SerializeField] private float timeToFullLose,timeToFullRecovey;
+    [Header("Sprint Settings")]
     [SerializeField] private float speed;
-    [SerializeField] private bool _lockeAutoRecovery;
-    [SerializeField] private float speedMultiplier;
+
+    private float _speedMultiplier = 0;
 
     private void Start()
     {
         _lockeAutoRecovery = false;
-        ResetStamina();
+
+        maxValue = maxStamina;
+        currentValue = maxValue;
     }
 
-    public void OnSprint(InputValue value)
+    private void Update()
     {
-        speedMultiplier = value.Get<float>();
-        if (!_lockeAutoRecovery)
-        {
-            movement.SetSprintSpeed(Mathf.Clamp(speed * speedMultiplier, 1, float.MaxValue));
-            return;
-        }
-        movement.SetSprintSpeed(1);
-    }
-    public void Update()
-    {
-        if (stamina <= 0)
+        UpdateUI();
+        if (currentValue <= 0)
         {
             StartCoroutine(FullStaminaRecovery());
             return;
         }
-        
         if (_lockeAutoRecovery) return;
-        if (speedMultiplier > 0)
+        if (_speedMultiplier > 0)
         {
-            stamina -= Time.deltaTime * maxStamina / timeToFullLose;
-            stamina = Mathf.Clamp(stamina, 0, maxStamina);
+            currentValue -= Time.deltaTime * maxValue / timeToFullLose;
             return;
         }
-        if (speedMultiplier <= 0)
+        if (_speedMultiplier <= 0)
         {
-            stamina += Time.deltaTime * maxStamina / timeToFullLose;
-            stamina = Mathf.Clamp(stamina, 0, maxStamina);
+            currentValue += Time.deltaTime * maxValue / timeToFullLose;
             return;
         }
-       
     }
-    private void ResetStamina()
+
+    public void OnSprint(InputValue value)
     {
-        stamina = maxStamina;
-    }
-    private IEnumerator FullStaminaRecovery()
-    {
-        _lockeAutoRecovery = true;
+        _speedMultiplier = value.Get<float>();
+        if (!_lockeAutoRecovery)
+        {
+            movement.SetSprintSpeed(Mathf.Clamp(speed * _speedMultiplier, 1, float.MaxValue));
+            return;
+        }
         movement.SetSprintSpeed(1);
-        while (stamina < maxStamina)
-        {
-            stamina += Time.deltaTime * maxStamina / timeToFullRecovey;
-            yield return null;
-        }
-        _lockeAutoRecovery = false;
     }
 }

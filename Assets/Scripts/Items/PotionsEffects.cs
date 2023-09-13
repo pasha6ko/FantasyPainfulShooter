@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PotionsEffects : MonoBehaviour
@@ -39,11 +38,11 @@ public class PotionsEffects : MonoBehaviour
         if (_isUsedShield) yield break;
         _isUsedShield = true;
 
-        _playerHp.MergeArmor();
+        //_playerHp.MergeArmor();
 
         yield return new WaitForSeconds(_time);
 
-        _playerHp.UnmergeArmor();
+        //_playerHp.UnmergeArmor();
         _isUsedShield = false;
     }
 

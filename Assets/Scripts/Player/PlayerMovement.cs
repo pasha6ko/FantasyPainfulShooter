@@ -11,8 +11,6 @@ public class PlayerMovement : MonoBehaviour
         InAirRun
     }
 
-    public float stamina;
-
     [Header("State")]
     public MovementStates movementState;
 
@@ -23,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Movenet Settings")]
     [SerializeField, Range(0f, 10f)] public float speed;
     [SerializeField, Range(0f, 20f)] private float jumpForce;
-    
+
 
     private float _sprintForce = 1f;
     private Vector2 _inputVector;
