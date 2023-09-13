@@ -22,8 +22,8 @@ public class PotionsEffects : MonoBehaviour
         if (_isUsedDamaged) yield break;
         _isUsedDamaged = true;
 
-        float damage = _gunSettings.damage;
-        _gunSettings.damage *= value;
+        int damage = _gunSettings.damage;
+        _gunSettings.damage = Mathf.RoundToInt(_gunSettings.damage * value);
 
         yield return new WaitForSeconds(_time);
 

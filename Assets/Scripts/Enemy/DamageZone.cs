@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
-    [SerializeField] private float damage;
+    [SerializeField] private int damage;
     [SerializeField] private DamageZone damageZone;
     [SerializeField] private PlayerHp _hp;
     private void OnTriggerEnter(Collider other)

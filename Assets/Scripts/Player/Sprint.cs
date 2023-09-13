@@ -21,7 +21,7 @@ public class Sprint : StaminaSystem
         UpdateUI();
         if (currentValue <= 0)
         {
-            StartCoroutine(FullStaminaRecovery());
+            //StartCoroutine(FullStaminaRecovery());
             return;
         }
         if (_lockeAutoRecovery) return;

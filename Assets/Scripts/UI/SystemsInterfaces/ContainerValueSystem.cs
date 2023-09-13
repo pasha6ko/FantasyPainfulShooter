@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract class ContainerValueSystem : ValueSystem
+public class ContainerValueSystem : ValueSystem
 {
-    private float _containerValue = 10f;
+    public float containerValue { get; private set; }
 
     public override float maxValue
     {
@@ -12,20 +12,19 @@ abstract class ContainerValueSystem : ValueSystem
         set
         {
             _maxSystemsValue = value > 100 ? value : 100;
-            _containerValue = _maxSystemsValue / 10f;
+            containerValue = _maxSystemsValue / 10f;
         }
     }
 
     public ContainerValueSystem() : base() 
     {
-        
+        containerValue = 10f;
     }
 
-    protected Dictionary<string, int> UpdateContainers()
+    public Dictionary<string, int> GetContainersInfo()
     {
-
-        int _fullContainers = (int)(currentValue / _containerValue - currentValue % _containerValue / _containerValue);
-        int _halfContainers = (currentValue % _containerValue) > 0 ? 1 : 0;
+        int _fullContainers = (int)(currentValue / containerValue - currentValue % containerValue / containerValue);
+        int _halfContainers = (currentValue % containerValue) > 0 ? 1 : 0;
         return new Dictionary<string, int>()
         {   { "full", _fullContainers},
             { "half", _halfContainers}

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ValueSystem
+public class ValueSystem
 {
-    public readonly int currentLevel;
+    public int currentLevel { get; private set; }
 
     protected float _maxSystemsValue;
     protected float _currentSystemsValue;
@@ -26,16 +26,16 @@ public abstract class ValueSystem
     public ValueSystem()
     {
         levelMultiplier = 1.5f;
-        SetUpgradeLevel(0);
+        SetLevel(0);
         currentValue = maxValue;
-    }
+    }   
 
     
-    public void SetUpgradeLevel(int value)
+    public void SetLevel(int value)
     {
         maxValue = 100;
         maxValue = maxValue * Mathf.Pow(levelMultiplier, value);
-        _currentSystemsValue = value;
+        currentLevel = value;
     }
 
     
