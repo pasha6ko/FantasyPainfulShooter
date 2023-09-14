@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 4978458153240451756}
   - component: {fileID: 3795006390494420261}
   - component: {fileID: 1879443785358091676}
+  - component: {fileID: 1114676391280886472}
+  - component: {fileID: 4338324455581696568}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -43,7 +45,7 @@ Transform:
   m_Children:
   - {fileID: 5328553638958819815}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5226371467312460581
 MeshFilter:
@@ -324,6 +326,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73da4eb03082b3242b7f2550a0573464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1114676391280886472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3491597211715761826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd737b70d1804d340bfe45b914045e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 3427641097877926485}
+  playerLook: {fileID: 5056364483839709443}
+  gunInteraction: {fileID: 1206372654263278676}
+  bigInventory: {fileID: 0}
+  shop: {fileID: 0}
+--- !u!114 &4338324455581696568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3491597211715761826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c923a43eafc50fa4097c831be7a93e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  effects: {fileID: 1879443785358091676}
 --- !u!1 &4239218233488426176
 GameObject:
   m_ObjectHideFlags: 0

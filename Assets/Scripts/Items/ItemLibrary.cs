@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class ItemLibrary : MonoBehaviour
 {
@@ -10,42 +12,62 @@ public class ItemLibrary : MonoBehaviour
     [Header("Items Effects")]
     [SerializeField] private PotionsEffects effects;
 
+    public List<InventorySlot> GetSlots()
+    {
+        List<InventorySlot> items = new List<InventorySlot>();
+
+        foreach (GameObject slot in slots)
+        {
+            items.Add(slot.GetComponent<InventorySlot>());
+        }
+
+        return items;
+    }
+
     public bool AddItem(Item item)
     {
         foreach (GameObject slot in slots)
         {
             InventorySlot itemsSlot = slot.GetComponent<InventorySlot>();
-            Image itemsImage = slot.transform.GetChild(0).GetComponent<Image>();
             if (itemsSlot.item != null) continue;
+            UpdateItem(itemsSlot, item, slot.transform.GetChild(0));
 
-            itemsSlot.item = item;
-            itemsImage.sprite = item.itemSprite;
-            itemsImage.enabled = true;
             return true;
         }
         return false;
     }
 
+    public void UpdateItem(InventorySlot slot, Item item, Transform imagesSlot)
+    {
+        Image itemsImage = imagesSlot.GetComponent<Image>();
+
+        slot.item = item;
+        itemsImage.sprite = item.itemSprite;
+        itemsImage.enabled = true;
+    }
+
     public void DeleteItems(bool isUsing)
     {
-        foreach (GameObject slot in slots)
+        foreach (InventorySlot inventorySlot in GetSlots())
         {
-            InventorySlot inventorySlot = slot.GetComponent<InventorySlot>();
-
-            if (!inventorySlot.isChoosed) continue;
-            if (isUsing) UseItem(inventorySlot.item.itemType);
-
-            inventorySlot.item = null;
-            inventorySlot.isChoosed = false;
-            inventorySlot.isHighlighted = false;
-
-            Image slotImage = slot.GetComponent<Image>();
-            slotImage.color = Color.white;
-
-            Image itemImage = slot.transform.GetChild(0).GetComponent<Image>();
-            itemImage.sprite = null;
-            itemImage.enabled = false;
+            DeleteItem(inventorySlot, inventorySlot.transform.GetChild(0).GetComponent<Image>(), isUsing);
         }
+    }
+
+    public void DeleteItem(InventorySlot inventorySlot, Image itemImage, bool isUsing = false)
+    {
+        if (!inventorySlot.isChoosed) return;
+        if (isUsing) UseItem(inventorySlot.item.itemType);
+
+        inventorySlot.item = null;
+        inventorySlot.isChoosed = false;
+        inventorySlot.isHighlighted = false;
+
+        Image slotImage = inventorySlot.GetComponent<Image>();
+        slotImage.color = Color.white;
+
+        itemImage.sprite = null;
+        itemImage.enabled = false;
     }
 
     private void UseItem(Item.Types type)

@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Speed Potion
   itemSprite: {fileID: 546060092, guid: 0f4889632d0be9e41b4a49a14d99e5ab, type: 3}
-  itemPrice: 80
-  itemSale: 20
+  itemPrice: 70
   itemType: 5
   itemDescription: "\u041F\u0440\u0438 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0438
     \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C

@@ -1,9 +1,10 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IDropHandler
 {
     [HideInInspector] public bool isChoosed = false;
     [HideInInspector] public bool isHighlighted = false;
@@ -17,6 +18,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [Header("Slot Component")]
     [SerializeField] public Item item;
     [SerializeField] private Image slot;
+    [SerializeField] private ItemLibrary itemLibrary;
 
     [Header("Color Settings")]
     [SerializeField] private Color normalColor = Color.white;
@@ -25,6 +27,29 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private void Start()
     {
         SetSlotColor(normalColor);
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        GameObject droppedItem = eventData.pointerDrag;
+
+        Item temporaryThisItem = item;
+
+        Transform droppedItemParent = droppedItem.GetComponent<DraggableItem>().parentBeforeDrag;
+        Item temporaryOtherItem = droppedItemParent.GetComponent<InventorySlot>().item;
+
+        if (item != null)
+        {
+            itemLibrary.UpdateItem(droppedItemParent.GetComponent<InventorySlot>(), temporaryThisItem, droppedItem.transform);
+            itemLibrary.UpdateItem(this, temporaryOtherItem, this.transform.GetChild(0));
+        }
+        else
+        {
+            itemLibrary.UpdateItem(this, temporaryOtherItem, this.transform.GetChild(0));
+
+            droppedItemParent.GetComponent<InventorySlot>().isChoosed = true;
+            itemLibrary.DeleteItem(droppedItemParent.GetComponent<InventorySlot>(), droppedItem.GetComponent<Image>());
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

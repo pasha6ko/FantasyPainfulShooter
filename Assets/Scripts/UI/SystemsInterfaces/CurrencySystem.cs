@@ -28,6 +28,11 @@ public class CurrencySystem : MonoBehaviour
     }
 
     public void AddMoney(int amount) => money += amount > 0 ? amount : 0;
+    public void RemoveMoney(int amount)
+    {
+        _money -= amount > 0 ? amount : 0;
+        UpdateUI();
+    }
 
     private void UpdateUI()
     {

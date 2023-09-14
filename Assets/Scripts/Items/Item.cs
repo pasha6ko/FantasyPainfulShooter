@@ -21,7 +21,6 @@ public class Item : ScriptableObject
     public string itemName;
     public Sprite itemSprite;
     public int itemPrice;
-    public int itemSale;
     public Types itemType;
     [TextArea] public string itemDescription;
 }

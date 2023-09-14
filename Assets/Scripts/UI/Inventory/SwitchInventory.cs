@@ -58,7 +58,7 @@ public class SwitchInventory : MonoBehaviour
 
     private void SetCursor()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
 
         if (_isInventoryOpened) return;
         Cursor.lockState = CursorLockMode.Locked;

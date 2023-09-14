@@ -16,6 +16,7 @@ public class SwitchShop : MonoBehaviour, IInteractble
 
     public void Interact(Transform transform)
     {
+        if (inventory.isInventoryOpened) return;
         shop.SetActive(true);
         SetCursor(CursorLockMode.None);
         SwitchMoving(false);
