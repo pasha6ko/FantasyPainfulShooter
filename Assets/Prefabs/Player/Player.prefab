@@ -741,6 +741,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7468054879200055333, guid: 07fb0f0f985d99241bcedfa5be4191e0,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 5328553638958819815}
     - target: {fileID: 8190218978253112010, guid: 07fb0f0f985d99241bcedfa5be4191e0,
         type: 3}
       propertyPath: m_Name
@@ -771,6 +776,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4783121100573968437}
     m_Modifications:
+    - target: {fileID: 2123247624020607427, guid: f88a9f721e5e07149904bb3b99ffe42b,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 5328553638958819815}
     - target: {fileID: 3227207604417321343, guid: f88a9f721e5e07149904bb3b99ffe42b,
         type: 3}
       propertyPath: m_RootOrder
