@@ -6,9 +6,8 @@ using UnityEngine;
 public class AttackTrigger : MonoBehaviour
 {
     public Action attackTriggerAction;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.transform.CompareTag("Player")) attackTriggerAction.Invoke();
-        print("trigger");
     }
 }

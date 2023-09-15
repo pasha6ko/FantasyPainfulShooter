@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7ab707db36da645b17364221090184, type: 3}
   m_Name: FastFireGun
   m_EditorClassIdentifier: Assembly-CSharp::GunSettings
-  name: AutoGun
+  objectName: Rifle
   bulletPrefab: {fileID: 0}
   isShotGun: 0
   bulletsPerShoot: 1
   fireSpeed: 10
   fireDistance: 300
   reloadTime: 0.4
-  damage: 20
   fireRange: 10
   recoilAngle: 0
-  recoilSpeed: 0
+  recoilSpeed: 1
+  damage: 20
   magazineLimit: 50

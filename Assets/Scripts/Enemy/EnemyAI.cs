@@ -33,13 +33,13 @@ public class EnemyAI : MonoBehaviour
     {
         TargetFounded += FoundTrager;
         TargetLosted += LostTarget;
-        trigger.attackTriggerAction += Attack;
+        if(trigger!=null)
+            trigger.attackTriggerAction += Attack;
         agent.speed = walkSpeed;
         state = Mode.Idle;
     }
     protected virtual void FixedUpdate()
     {
-        print(IsSeePlayer());
         if (Vector3.Distance(transform.position, agent.destination) < 0.1)
             Stop();
         animator.SetFloat("Speed", agent.speed);
@@ -100,7 +100,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (player == null)
         {
-            TargetLosted.Invoke();
+            TargetLosted.Invoke();  
             return false;
         }
         if (player != null && state == Mode.Active) return true;

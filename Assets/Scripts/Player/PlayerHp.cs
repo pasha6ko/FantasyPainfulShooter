@@ -17,7 +17,6 @@ public class PlayerHp : Hp
 
     private void Start()
     {
-        print("Start");
         ResetHp();
         ResetArmor();
         UpdateHp();

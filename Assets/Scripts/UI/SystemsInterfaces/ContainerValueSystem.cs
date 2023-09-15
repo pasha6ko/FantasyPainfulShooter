@@ -16,8 +16,12 @@ public class ContainerValueSystem : ValueSystem
         }
     }
 
-    public ContainerValueSystem() : base() 
+    public ContainerValueSystem(float maxValue = 100, int level = 0) : base(maxValue,level) 
     {
+        this.maxValue = maxValue;
+        levelMultiplier = 1.5f;
+        SetLevel(level);
+        currentValue = maxValue;
         containerValue = 10f;
     }
 

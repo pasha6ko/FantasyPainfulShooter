@@ -6,18 +6,18 @@ using UnityEngine.UI;
 interface IDamageble
 {
     public void TakeDamage(float damageValue);
-    public void Heal(int healValue);
+    public void Heal(float healValue);
     public void ResetHp();
     public void Die();
 }
 
-public abstract class Hp : MonoBehaviour
+public abstract class Hp : MonoBehaviour , IDamageble
 {
     protected ContainerValueSystem hp = new ContainerValueSystem();
 
     protected Coroutine _armorCoroutine;
 
-    private void Start()
+    virtual protected void Start()
     {
         ResetHp();
     }
@@ -38,6 +38,7 @@ public abstract class Hp : MonoBehaviour
     virtual public void TakeDamage(float value)
     {
         hp.currentValue -= value;
+        print(hp.currentValue);
         if (hp.currentValue <= 0)
             Die();
     }

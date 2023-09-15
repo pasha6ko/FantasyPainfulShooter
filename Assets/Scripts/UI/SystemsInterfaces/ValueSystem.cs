@@ -23,8 +23,9 @@ public class ValueSystem
         set { _currentSystemsValue = Mathf.Clamp(value, 0, maxValue); }
     }
 
-    public ValueSystem(int level = 0)
+    public ValueSystem(float maxValue = 100, int level = 0)
     {
+        this.maxValue = maxValue;
         levelMultiplier = 1.5f;
         SetLevel(level);
         currentValue = maxValue;
@@ -38,6 +39,10 @@ public class ValueSystem
         currentLevel = value;
     }
 
+    virtual public void MaximizeValue()
+    {
+        currentValue = maxValue;
+    }
     
 
 }
