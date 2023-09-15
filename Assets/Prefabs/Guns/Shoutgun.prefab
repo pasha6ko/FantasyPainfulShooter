@@ -117,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 4587712237380289013}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1376893572122401369
 MeshFilter:
@@ -211,3 +211,4 @@ MonoBehaviour:
   trigger: 0
   aiming: 0
   locked: 0
+  bullets: {fileID: 0}

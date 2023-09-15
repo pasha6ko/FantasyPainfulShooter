@@ -1,10 +1,11 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Gun : MonoBehaviour
 {
-    [Header("Components")]
+    [Header("Gun Components")]
     [SerializeField] public GunSettings settings;
     [SerializeField] private Transform mainCamera;
     [SerializeField] private Transform muzzle;
@@ -12,6 +13,10 @@ public class Gun : MonoBehaviour
     [SerializeField] private int allAmmoCount;
     [SerializeField] private int magazin;
     [SerializeField] private bool trigger, aiming, locked;// Make ful private after all
+
+    [Header("UI Components")]
+    [SerializeField] private TextMeshProUGUI bullets;
+
     private Coroutine _firePricess;
 
 
@@ -23,6 +28,16 @@ public class Gun : MonoBehaviour
     {
         trigger = false;
         gunAnimator.SetFloat("FireSpeed", settings.fireSpeed);
+
+        UpdateBullets();
+    }
+
+    private void OnDisable()
+    {
+        if (_firePricess == null) return;
+
+        StopCoroutine(_firePricess);
+        _firePricess = null;
     }
 
     public void StartGunReload()
@@ -36,6 +51,8 @@ public class Gun : MonoBehaviour
         magazin = Mathf.Clamp(settings.magazineLimit, 0, allAmmoCount);
         allAmmoCount -= magazin;
         locked = false;
+
+        UpdateBullets();
     }
     public void GunAim(bool value)
     {
@@ -89,11 +106,17 @@ public class Gun : MonoBehaviour
                 Fire();
             }
             magazin--;
+            UpdateBullets();
             yield return new WaitForSeconds(1f / settings.fireSpeed);
         }
         _firePricess = null;
         gunAnimator.SetBool("Fire", false);
 
+    }
+
+    private void UpdateBullets()
+    {
+        bullets.text = magazin.ToString();
     }
 }
 

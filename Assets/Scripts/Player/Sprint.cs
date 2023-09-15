@@ -47,7 +47,7 @@ public class Sprint : MonoBehaviour
             return;
         }
         if (_lockeAutoRecovery) return;
-        if (_speedMultiplier > 0)
+        if (_speedMultiplier > 0 && movement.inputVector != Vector2.zero)
         {
             stamina.currentValue -= Time.deltaTime * stamina.maxValue / timeToFullLose;
             return;

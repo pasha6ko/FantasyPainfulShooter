@@ -26,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
     private float _sprintForce = 1f;
     private Vector2 _inputVector;
 
+    public Vector2 inputVector
+    {
+        get => _inputVector;
+    }
+
     private void Update()
     {
         Run();
