@@ -18,7 +18,7 @@ public class SwitchShop : MonoBehaviour, IInteractble
     public void Interact(Transform transform)
     {
         exp.CheckAbilities();
-
+        LockGuns(inventory.isInventoryOpened);
         if (inventory.isInventoryOpened) return;
         shop.SetActive(true);
         SetCursor(CursorLockMode.None);
@@ -31,6 +31,15 @@ public class SwitchShop : MonoBehaviour, IInteractble
         playerLook.enabled = value;
         gunInteraction.enabled = value;
         inventory.isInventoryOpened = !value;
+    }
+
+    private void LockGuns(bool value)
+    {
+        foreach (Gun gun in inventory.guns)
+        {
+            gun.isLocked = !value;
+            print(gun.isLocked);
+        }
     }
 
     private void SetCursor(CursorLockMode mode)

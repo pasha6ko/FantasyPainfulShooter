@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class SwitchInventory : MonoBehaviour
 {
+    [Header("Guns Components")]
+    [SerializeField] public List<Gun> guns;
+
     [Header("Player Components")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerLook playerLook;
@@ -39,6 +42,7 @@ public class SwitchInventory : MonoBehaviour
         _isInventoryOpened = !_isInventoryOpened;
 
         SwitchMoving();
+        LockGuns();
         InventorySwitch();
         SetCursor();
         ResetSlotsColor();
@@ -71,6 +75,14 @@ public class SwitchInventory : MonoBehaviour
         gunInteraction.enabled = !_isInventoryOpened;
 
         shop.SetActive(false);
+    }
+
+    private void LockGuns()
+    {
+        foreach (Gun gun in guns)
+        {
+            gun.isLocked = _isInventoryOpened;
+        }
     }
 
     private void InventorySwitch()

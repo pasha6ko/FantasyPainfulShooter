@@ -58,7 +58,7 @@ public class ItemLibrary : MonoBehaviour
     public void DeleteItem(InventorySlot inventorySlot, Image itemImage, bool isUsing = false)
     {
         if (!inventorySlot.isChoosed) return;
-        if (isUsing) UseItem(inventorySlot.item.itemType);
+        if (isUsing && inventorySlot.item != null) UseItem(inventorySlot.item.itemType);
 
         inventorySlot.item = null;
         inventorySlot.isChoosed = false;

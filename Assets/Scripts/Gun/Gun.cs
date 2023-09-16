@@ -19,6 +19,8 @@ public class Gun : MonoBehaviour
 
     private Coroutine _firePricess;
 
+    public bool isLocked { get => locked; set => locked = value; }
+
 
     private void Start()
     {
