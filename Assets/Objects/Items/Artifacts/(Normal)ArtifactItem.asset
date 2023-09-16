@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56487201a1499044883131dbd17099fe, type: 3}
-  m_Name: (Rare)ArtifactItem
+  m_Name: (Normal)ArtifactItem
   m_EditorClassIdentifier: 
-  itemName: Artifact
-  itemSprite: {fileID: 0}
-  itemPrice: 0
-  itemSale: 100
+  itemName: Crystal
+  itemSprite: {fileID: 48445853, guid: 4628afdcbe3f6dd4dae68a6305a09527, type: 3}
+  itemPrice: 50
+  itemSellPercent: 1
   itemType: 1
-  itemDescription: "\u0420\u0435\u0434\u043A\u0438\u0439 \u0430\u0440\u0442\u0435\u0444\u0430\u043A\u0442.\n\u0422\u043E\u0440\u0433\u043E\u0432\u0435\u0446
+  isUseable: 0
+  itemDescription: "\u0427\u0430\u0441\u0442\u044B\u0439 \u0430\u0440\u0442\u0435\u0444\u0430\u043A\u0442.\n\u0422\u043E\u0440\u0433\u043E\u0432\u0435\u0446
     \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0435\u0442 \u0435\u0433\u043E
-    \u0437\u0430 \u0432\u044B\u0441\u043E\u043A\u0443\u044E \u0446\u0435\u043D\u0443."
+    \u0437\u0430 \u043D\u0435\u0431\u043E\u043B\u044C\u0448\u0443\u044E \u0446\u0435\u043D\u0443."

@@ -19,7 +19,7 @@ public class ContainerValueSystem : ValueSystem
     public ContainerValueSystem(float maxValue = 100, int level = 0) : base(maxValue,level) 
     {
         this.maxValue = maxValue;
-        levelMultiplier = 1.5f;
+        _levelMultiplier = 1.5f;
         SetLevel(level);
         currentValue = maxValue;
         containerValue = 10f;
@@ -39,6 +39,6 @@ public class ContainerValueSystem : ValueSystem
     {
         base.SetLevel(value);
 
-        containerValue = containerValue * Mathf.Pow(levelMultiplier, containerValue);
+        containerValue = containerValue * Mathf.Pow(_levelMultiplier, containerValue);
     }
 }

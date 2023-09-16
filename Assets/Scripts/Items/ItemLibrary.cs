@@ -50,6 +50,7 @@ public class ItemLibrary : MonoBehaviour
     {
         foreach (InventorySlot inventorySlot in GetSlots())
         {
+            if (inventorySlot.item != null && isUsing && !inventorySlot.item.isUseable) continue;
             DeleteItem(inventorySlot, inventorySlot.transform.GetChild(0).GetComponent<Image>(), isUsing);
         }
     }

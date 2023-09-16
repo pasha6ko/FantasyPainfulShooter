@@ -15,7 +15,7 @@ public class PlayerHp : Hp
 
     public ContainerValueSystem armor = new ContainerValueSystem();
 
-    private void Start()
+    private new void Start()
     {
         ResetHp();
         ResetArmor();

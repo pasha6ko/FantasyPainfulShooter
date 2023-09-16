@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class SpawnerZone : MonoBehaviour
 {
     [SerializeField] private Transform empty;
-    [SerializeField] private List<GameObject> m_SpawnList = new List<GameObject>();
+    [SerializeField] private List<GameObject> m_SpawnList = new();
     [SerializeField] private Collider colider;
     [SerializeField] private float timeBetweenSpawn;
 

@@ -22,5 +22,5 @@ MonoBehaviour:
   fireRange: 10
   recoilAngle: 0
   recoilSpeed: 1
-  damage: 20
+  damage: 10
   magazineLimit: 50

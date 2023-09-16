@@ -15,7 +15,9 @@ MonoBehaviour:
   itemName: Shield Potion
   itemSprite: {fileID: 877137606, guid: 0f4889632d0be9e41b4a49a14d99e5ab, type: 3}
   itemPrice: 60
-  itemType: 4
+  itemSellPercent: 0.8
+  itemType: 6
+  isUseable: 1
   itemDescription: "\u041F\u0440\u0438 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0438
     \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0443\u044E
     \u0431\u0440\u043E\u043D\u044E \u0432\u043C\u0435\u0441\u0442\u0435 \u0441 \u0442\u0435\u043A\u0443\u044E\u0449\u0435\u0439

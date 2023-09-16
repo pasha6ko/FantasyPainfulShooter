@@ -8,7 +8,9 @@ public class ValueSystem
     protected float _maxSystemsValue;
     protected float _currentSystemsValue;
 
-    protected float levelMultiplier;
+    protected float _levelMultiplier;
+
+    public float levelMultiplier { get => _levelMultiplier; }
    
     virtual public float maxValue
     {
@@ -22,20 +24,19 @@ public class ValueSystem
         get => _currentSystemsValue;
         set { _currentSystemsValue = Mathf.Clamp(value, 0, maxValue); }
     }
-
-    public ValueSystem(float maxValue = 100, int level = 0)
+    public ValueSystem(float maxValue = 100, int level = 0, float levelMultiplier = 1.5f)
     {
+        this._levelMultiplier = levelMultiplier;
+        this.SetLevel(level);
         this.maxValue = maxValue;
-        levelMultiplier = 1.5f;
-        SetLevel(level);
-        currentValue = maxValue;
+        this.currentValue = this.maxValue;
     }   
 
     
     virtual public void SetLevel(int value)
     {
         maxValue = 100;
-        maxValue = maxValue * Mathf.Pow(levelMultiplier, value);
+        maxValue = maxValue * Mathf.Pow(_levelMultiplier, value);
         currentLevel = value;
     }
 

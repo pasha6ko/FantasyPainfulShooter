@@ -13,7 +13,9 @@ public class Item : ScriptableObject
         Ammo,
         Artifact,
         Damage,
+        DamageAbility,
         Heal,
+        HPAbility,
         Shield,
         Speed,
     }
@@ -21,6 +23,8 @@ public class Item : ScriptableObject
     public string itemName;
     public Sprite itemSprite;
     public int itemPrice;
+    [Range(0, 1)] public float itemSellPercent = 0.8f;
     public Types itemType;
+    public bool isUseable = true;
     [TextArea] public string itemDescription;
 }

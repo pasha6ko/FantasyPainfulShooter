@@ -14,7 +14,7 @@ public class PotionsEffects : MonoBehaviour
     {
         _playerMovement = GetComponent<PlayerMovement>();
         _playerHp = GetComponent<PlayerHp>();
-        //_gunSettings = GetComponent<GunInteraction>().currentGun.settings;
+        _gunSettings = GetComponent<GunInteraction>().currentGun.settings;
     }
 
     public IEnumerator Damage(float value)

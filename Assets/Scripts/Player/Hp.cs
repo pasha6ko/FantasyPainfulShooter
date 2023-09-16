@@ -17,6 +17,14 @@ public abstract class Hp : MonoBehaviour , IDamageble
 
     protected Coroutine _armorCoroutine;
 
+    public float HP
+    {
+        get => hp.maxValue;
+        set { hp.maxValue = value; }
+    }
+
+    public float hpMultiplier { get => hp.levelMultiplier; }
+
     virtual protected void Start()
     {
         ResetHp();

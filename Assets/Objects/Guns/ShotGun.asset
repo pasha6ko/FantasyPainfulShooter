@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7ab707db36da645b17364221090184, type: 3}
   m_Name: ShotGun
   m_EditorClassIdentifier: 
-  name: ShotGun
+  objectName: 
   bulletPrefab: {fileID: 0}
   isShotGun: 1
   bulletsPerShoot: 50
   fireSpeed: 1.25
   fireDistance: 5
   reloadTime: 1
-  damage: 13
   fireRange: 300
   recoilAngle: 35
   recoilSpeed: 0
+  damage: 25
   magazineLimit: 5
