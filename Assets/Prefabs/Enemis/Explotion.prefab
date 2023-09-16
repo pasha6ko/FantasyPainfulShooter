@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 6995780849103208436}
   - component: {fileID: 2225952288624248126}
   - component: {fileID: 3764641584388731513}
+  - component: {fileID: 3953356678521960254}
   m_Layer: 6
   m_Name: Explotion
   m_TagString: Zombie
@@ -339,7 +340,7 @@ Transform:
   - {fileID: 76378905279999433}
   - {fileID: 1445439812474914384}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &5324477441491011110
 CapsuleCollider:
@@ -448,6 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 5021560499008283297}
   itemDrop: {fileID: 3764641584388731513}
+  reward: {fileID: 3953356678521960254}
   level: 1
 --- !u!114 &2225952288624248126
 MonoBehaviour:
@@ -492,6 +494,20 @@ MonoBehaviour:
   - {fileID: 8077894284111417699, guid: 9154c991ceb295348a0c73679aad11b3, type: 3}
   level1: 2
   level2: 6
+--- !u!114 &3953356678521960254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161397070203631498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6769842f09a3d4642b4dd2d1d43d2e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerXP: {fileID: 0}
+  rewardValue: 30
 --- !u!1 &6665576210190468217
 GameObject:
   m_ObjectHideFlags: 0

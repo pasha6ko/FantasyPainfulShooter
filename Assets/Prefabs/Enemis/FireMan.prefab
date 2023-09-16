@@ -176,6 +176,8 @@ GameObject:
   - component: {fileID: 4726815777048460068}
   - component: {fileID: 6649865276174160947}
   - component: {fileID: 3361398855101784943}
+  - component: {fileID: -7866429118632107010}
+  - component: {fileID: 401803717318957936}
   m_Layer: 6
   m_Name: FireMan
   m_TagString: Zombie
@@ -203,7 +205,7 @@ Transform:
   - {fileID: 3127854857209298832}
   - {fileID: 8554053175179584071}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &3888224696968116440
 CapsuleCollider:
@@ -311,6 +313,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 5636942092548062949}
+  itemDrop: {fileID: -7866429118632107010}
+  reward: {fileID: 401803717318957936}
   level: 0
 --- !u!114 &3361398855101784943
 MonoBehaviour:
@@ -341,6 +345,38 @@ MonoBehaviour:
   aimPoint: {fileID: 1682729649558040312}
   firePoint: {fileID: 3127854857209298832}
   timeBetweenShots: 1
+--- !u!114 &-7866429118632107010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547422795263740494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c7cb08989ca4440a162b2b07469448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsPrefabs:
+  - {fileID: 142533687143009891, guid: da743a1226600624fb592adc22b5d2c2, type: 3}
+  - {fileID: 5804520715305484413, guid: 3fcdc501990708547a1ccf85310696eb, type: 3}
+  - {fileID: 8077894284111417699, guid: 9154c991ceb295348a0c73679aad11b3, type: 3}
+  level1: 2
+  level2: 6
+--- !u!114 &401803717318957936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547422795263740494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6769842f09a3d4642b4dd2d1d43d2e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerXP: {fileID: 0}
+  rewardValue: 30
 --- !u!1 &780515011914857301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1129,40 @@ Transform:
   - {fileID: 6930154222853129004}
   - {fileID: 6995741392145229183}
   m_Father: {fileID: 2181829563000799468}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4214219845342086825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1331328711462180, guid: e8e6a8d0d7d9a1245a0d143f23cc283b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4215176050871192461}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4210999231872385275}
+  - component: {fileID: 9120657997823682242}
+  m_Layer: 0
+  m_Name: 'SM_Chr_Zombie_Male_02 (Missing Prefab with guid: e8e6a8d0d7d9a1245a0d143f23cc283b)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4210999231872385275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4267430597299062, guid: e8e6a8d0d7d9a1245a0d143f23cc283b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4215176050871192461}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214219845342086825}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 364873181719701750}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4415329536017269326
@@ -3212,18 +3282,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 9120657997823682242}
   m_SourcePrefab: {fileID: 100100000, guid: e8e6a8d0d7d9a1245a0d143f23cc283b, type: 3}
---- !u!4 &4210999231872385275 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4267430597299062, guid: e8e6a8d0d7d9a1245a0d143f23cc283b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4215176050871192461}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4214219845342086825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1331328711462180, guid: e8e6a8d0d7d9a1245a0d143f23cc283b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4215176050871192461}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9120657997823682242
 MonoBehaviour:
   m_ObjectHideFlags: 0
