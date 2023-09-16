@@ -13,9 +13,12 @@ public class SwitchShop : MonoBehaviour, IInteractble
 
     [Header("Shop Components")]
     [SerializeField] private GameObject shop;
+    [SerializeField] private EXPSystem exp;
 
     public void Interact(Transform transform)
     {
+        exp.CheckAbilities();
+
         if (inventory.isInventoryOpened) return;
         shop.SetActive(true);
         SetCursor(CursorLockMode.None);

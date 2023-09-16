@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,6 +56,8 @@ public class EXPSystem : MonoBehaviour
     {
         foreach (GameObject closure in abilities.closuresList)
         {
+            if (!abilities.abilitiesCount.Keys.Contains(closure)) continue;
+
             if (abilities.abilitiesCount[closure] >= system.currentLevel)
             {
                 closure.SetActive(false);

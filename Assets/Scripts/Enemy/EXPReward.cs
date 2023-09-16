@@ -13,7 +13,7 @@ public class EXPReward : MonoBehaviour
         print(_player.transform.name);
     }
 
-    private void GetEXP()
+    public void GetEXP()
     {
         _player.AddExp(rewardValue);
     }
