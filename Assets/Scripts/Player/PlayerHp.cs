@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHp : Hp
 {
@@ -17,13 +18,12 @@ public class PlayerHp : Hp
 
     private new void Start()
     {
-        ResetHp();
         ResetArmor();
         UpdateHp();
     }
     override public void Die()
     {
-        Destroy(gameObject);
+        SceneManager.LoadScene("MainMenu");
     }
 
     override public void Heal(float healValue)
@@ -56,6 +56,8 @@ public class PlayerHp : Hp
         UpdateHp();
         UpdateArmor();
 
+        print(hp.currentValue);
+        if (hp.currentValue <= 0) Die();
         if (_armorCoroutine != null) return;
         _armorCoroutine = StartCoroutine(ArmorRecovery());
     }
@@ -83,6 +85,10 @@ public class PlayerHp : Hp
         Dictionary<string, int> containersInfo = hp.GetContainersInfo();
         int half = containersInfo["half"];
         int fulls = containersInfo["full"];
+        print("FULLS" + fulls);
+        print(hp.containerValue);
+        print(hp.currentLevel);
+        print(hp.maxValue);
 
         for (int i = 0; i < hpContainers.Count; i++)
         {

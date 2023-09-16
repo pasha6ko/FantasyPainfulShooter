@@ -13,7 +13,7 @@ interface IDamageble
 
 public abstract class Hp : MonoBehaviour , IDamageble
 {
-    protected ContainerValueSystem hp = new ContainerValueSystem();
+    public ContainerValueSystem hp = new ContainerValueSystem();
 
     protected Coroutine _armorCoroutine;
 

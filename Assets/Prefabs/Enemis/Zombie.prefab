@@ -517,9 +517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsPrefabs:
-  - {fileID: 142533687143009891, guid: da743a1226600624fb592adc22b5d2c2, type: 3}
-  - {fileID: 5804520715305484413, guid: 3fcdc501990708547a1ccf85310696eb, type: 3}
-  - {fileID: 8077894284111417699, guid: 9154c991ceb295348a0c73679aad11b3, type: 3}
+  - {fileID: 3154686968557332871, guid: f8429f4e759f5cc4cbdef840d7aae0b2, type: 3}
+  - {fileID: 1848630948262460725, guid: 3d98a6d9ea90367438e0c96237f9ea66, type: 3}
+  - {fileID: 439717208153383853, guid: 14c67bb24738b5045a72eb310f762958, type: 3}
   level1: 2
   level2: 6
 --- !u!114 &1199413186853623939

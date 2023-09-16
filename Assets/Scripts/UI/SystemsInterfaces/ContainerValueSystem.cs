@@ -39,6 +39,6 @@ public class ContainerValueSystem : ValueSystem
     {
         base.SetLevel(value);
 
-        containerValue = containerValue * Mathf.Pow(_levelMultiplier, containerValue);
+        containerValue = containerValue * Mathf.Pow(_levelMultiplier, value);
     }
 }

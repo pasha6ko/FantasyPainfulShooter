@@ -21,10 +21,11 @@ public class EXPSystem : MonoBehaviour
     private void Awake()
     {
         expBar.fillAmount = 0;
-        system.SetLevel(0);
-        system.currentValue = 0;
     }
-
+    private void Start()
+    {
+        AddExp(0);
+    }
     public void AddExp(int value)
     {
         exp = (int)(system.currentValue - system.maxValue + value);
@@ -37,6 +38,7 @@ public class EXPSystem : MonoBehaviour
     private void UpdateEXP()
     {
         expBar.fillAmount = system.currentValue / system.maxValue;
+        expText.text = $"{system.currentLevel}";
     }
 
     private void NewLevel()

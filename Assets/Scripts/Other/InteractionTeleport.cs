@@ -8,6 +8,7 @@ public class InteractionTeleport : MonoBehaviour, IInteractble
     [SerializeField] private string levelName;
     public void Interact(Transform transform)
     {
+        PlayerSaveData.Instance.SaveData();
         SceneManager.LoadScene(levelName);
     }
 }

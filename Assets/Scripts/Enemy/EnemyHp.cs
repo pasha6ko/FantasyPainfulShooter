@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +5,7 @@ public class EnemyHp : Hp
 {
     [SerializeField] private Slider slider;
     [SerializeField] private ItemDrop itemDrop;
+    [SerializeField] private EXPReward reward;
     [SerializeField] private int level;
 
     protected override void Start()
@@ -18,13 +17,14 @@ public class EnemyHp : Hp
 
     private void FixedUpdate()
     {
-        if (slider == null) return; 
+        if (slider == null) return;
         slider.value = hp.currentValue / hp.maxValue;
     }
 
     public override void Die()
     {
-        if(itemDrop != null)
+        reward.GetEXP();
+        if (itemDrop != null)
             itemDrop.SpawnItem(level);
         base.Die();
     }

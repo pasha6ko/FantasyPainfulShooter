@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Sandbox/SandBoxPK.unity
-    guid: c9c5b50b2c83f59479188bb705e22620
+    path: Assets/Scenes/Game/MainMenu.unity
+    guid: ce9d6ec1bda6c7a488fe42a58ea5ccd5
+  - enabled: 1
+    path: Assets/Scenes/Game/Vilage.unity
+    guid: 4cb7c3c1d90e7604cb1a7659456bb7a3
+  - enabled: 1
+    path: Assets/Scenes/Game/OpenWorld.unity
+    guid: 254697c5093fa574da60911e1759992e
+  - enabled: 1
+    path: Assets/Scenes/Game/DestroiedVillage.unity
+    guid: 13256eeb3a807dc4387e15682588cde9
+  - enabled: 1
+    path: Assets/Scenes/Game/Final.unity
+    guid: 554f7cf5890f3c94bba89ccb64d7aa1b
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 05e68bf6bd8f6f448a1845cfd4aac0ed,
       type: 2}
