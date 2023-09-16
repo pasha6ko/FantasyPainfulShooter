@@ -17,6 +17,9 @@ public class Gun : MonoBehaviour
     [Header("UI Components")]
     [SerializeField] private TextMeshProUGUI bullets;
 
+    [Header("Bullets Components")]
+    [SerializeField] private ItemLibrary itemLibrary;
+
     private Coroutine _firePricess;
 
     public bool isLocked { get => locked; set => locked = value; }
@@ -44,6 +47,8 @@ public class Gun : MonoBehaviour
 
     public void StartGunReload()
     {
+        if (!itemLibrary.FindItem(Item.Types.Ammo)) return;
+
         if (locked) return;
         locked = true;
         gunAnimator.SetTrigger("Reload");

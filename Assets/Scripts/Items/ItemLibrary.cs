@@ -71,6 +71,19 @@ public class ItemLibrary : MonoBehaviour
         itemImage.enabled = false;
     }
 
+    public bool FindItem(Item.Types type)
+    {
+        foreach (InventorySlot inventorySlot in GetSlots())
+        {
+            if (inventorySlot.item == null) continue;
+            if (inventorySlot.item.itemType != type) continue;
+            inventorySlot.isChoosed = true;
+            DeleteItems(false);
+            return true;
+        }
+        return false;
+    }
+
     private void UseItem(Item.Types type)
     {
         switch (type)
