@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class EXPReward : MonoBehaviour
 {
+    public EXPSystem playerXP;
     [SerializeField] private int rewardValue;
-    private EXPSystem _player;
-
-    private void Start()
-    {
-         _player = GameObject.FindObjectOfType(typeof(EXPSystem)) as EXPSystem;
-        print(_player.transform.name);
-    }
 
     public void GetEXP()
     {
-        _player.AddExp(rewardValue);
+        playerXP.AddExp(rewardValue);
     }
 }
